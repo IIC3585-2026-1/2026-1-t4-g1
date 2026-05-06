@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Split Friends PWA</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div>
+                <h1>Split Friends</h1>
+                <p class="subtitle">Divide gastos con tus amigos</p>
+            </div>
+        </header>
+
+        <section class="status-card online" id="connectionStatus">
+            <span class="status-dot"></span>
+            <span id="connectionText">Estás online</span>
+        </section>
+
+        <section class="summary">
+            <div>
+                <p class="summary-label">Total gastado</p>
+                <h2 id="totalAmount">$0</h2>
+            </div>
+
+            <div>
+                <p class="summary-label">Participantes</p>
+                <h2 id="participantsCount">0</h2>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>Participantes</h2>
+                    <p>Agrega a las personas del grupo.</p>
+                </div>
+            </div>
+
+            <form class="form-row" id="participantForm">
+                <input 
+                    type="text" 
+                    id="participantName" 
+                    placeholder="Nombre del participante" 
+                    required 
+                />
+                <button type="submit">Agregar</button>
+            </form>
+
+            <div class="empty-state" id="participantsEmpty">
+                Aun no hay participantes. ¡Agrega algunos para empezar a dividir los gastos!
+            </div>
+
+            <ul class="participants-list" id="participantsList"></ul>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                <h2>Gastos</h2>
+                <p>Registra lo que pagó cada persona.</p>
+                </div>
+            </div>
+
+            <form class="expense-form" id="expenseForm">
+                <label>
+                Descripción
+                <input
+                    type="text"
+                    id="expenseDescription"
+                    placeholder="¿Qué se compró?"
+                    required
+                />
+                </label>
+
+                <label>
+                    Monto
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        placeholder="¿Cuánto costó?"
+                        min="0.01"
+                        required
+                    />
+                </label>
+
+                <label>
+                    Pagó
+                    <select id="expensePayer" required>
+                        <option value="" disabled selected>Selecciona quién pagó</option>
+                    </select>
+                </label>
+
+                <button type="submit" class="full-button">Agregar gasto</button>
+            </form>
+
+            <div class="empty-state" id="expensesEmpty">
+                Aun no hay gastos registrados. ¡Agrega algunos para empezar a dividir los gastos!
+            </div>
+
+            <div class="expenses-list" id="expensesList"></div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>Resumen</h2>
+                    <p>Balance calculado entre todos.</p>
+                </div>
+            </div>
+
+            <div class="balance-box">
+                <div>
+                    <span>Cada persona debería pagar</span>
+                    <strong id="amountPerPerson">$0</strong>
+                </div>
+            </div>
+
+            <div class="empty-state" id="balanceEmpty">
+                Aun no hay gastos registrados. ¡Agrega algunos para ver el balance!
+            </div>
+
+            <div class="empty-state" id="balanceEmpty">
+                Agrega participantes y gastos para ver el resumen.
+            </div>
+
+            <div class="balance-list" id="balanceList"></div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>Acciones PWA</h2>
+                    <p>Prueba las funcionalidades de la aplicación progresiva.</p>
+                </div>
+            </div>
+
+            <div class="action-grid">
+                <button type="button" class="secondary-button" id="notifyButton">
+                    Activar notificaciones
+                </button>
+
+                <button type="button" class="danger-button" id="clearDataButton">
+                    Limpiar datos
+                </button>
+            </div>
+        </section>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
