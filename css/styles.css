@@ -319,6 +319,17 @@ button[type="submit"]:active,
   color: var(--accent);
 }
 
+.expense-item button {
+  padding: 4px 10px;
+  font-size: 12px;
+  background: var(--red-lt);
+  color: var(--red);
+  border: none;
+  border-radius: 6px;
+}
+
+.expense-item button:hover { background: #edcaca; }
+
 /* ── Balance box ── */
 .balance-box {
   background: var(--accent-lt);
