@@ -1,5 +1,6 @@
 const addParticipant = () => {
     const participant = document.getElementById("participantName");
+    const participantCount = document.getElementById("participantsCount");
     const participantName = participant.value.trim();
     
     if (
@@ -28,11 +29,13 @@ const addParticipant = () => {
         const opt = select.querySelector(`option[value="${participantName}"]`);
         opt.remove();
         li.remove();
+        participantCount.textContent = parseInt(participantCount.textContent) - 1;
     });
 
     li.appendChild(deleteButton);
     participants_list.appendChild(li);
     select.appendChild(option);
+    participantCount.textContent = parseInt(participantCount.textContent) + 1;
     participant.value = "";
 };
 
@@ -72,6 +75,7 @@ const addTransaction = () => {
     if (!checkField("Pagador", payer)) return;
     
     const expensesList = document.getElementById("expensesList");
+    const totalAmount = document.getElementById("totalAmount");
 
 
     const div = document.createElement("div");
@@ -95,12 +99,16 @@ const addTransaction = () => {
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Eliminar";
-    deleteButton.addEventListener("click", () => div.remove());
+    deleteButton.addEventListener("click", () => {
+        div.remove();
+        totalAmount.textContent = `$${parseFloat(totalAmount.textContent.slice(1)) - parseFloat(amount)}`;
+    });
 
     div.appendChild(info);
     div.appendChild(amountEl);
     div.appendChild(deleteButton);
     expensesList.appendChild(div);
+    totalAmount.textContent = `$${parseFloat(totalAmount.textContent.slice(1)) + parseFloat(amount)}`;
     
     descrip.value = "";
     am.value = "";
