@@ -31,11 +31,11 @@ body {
 
 /* ── Layout ── */
 .app-container {
-  max-width: 560px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px 64px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
@@ -408,4 +408,16 @@ button[type="submit"]:active,
 @media (max-width: 400px) {
   .action-grid { grid-template-columns: 1fr; }
   .summary h2  { font-size: 1.6rem; }
+}
+
+.app-header,
+.summary,
+.status-card {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
 }
