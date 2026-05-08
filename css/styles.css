@@ -342,6 +342,11 @@ button[type="submit"]:active,
   gap: 12px;
   font-size: 13.5px;
   color: var(--muted);
+  flex-direction: column;
+}
+
+.balance-box .balance-item {
+    width: 100%;
 }
 
 .balance-box strong {
@@ -367,6 +372,7 @@ button[type="submit"]:active,
   font-size: 13.5px;
   border: 1px solid transparent;
   animation: slideIn .22s ease;
+  background: var(--bg);
 }
 
 .balance-item.owes {
