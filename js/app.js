@@ -1,5 +1,14 @@
 const participants = {};
 
+// Registrar Service Worker
+if ("serviceWorker" in navigator) {
+    // Espera que la página termine de cargar
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./../service-worker.js")
+        .then(res => console.log("Service Worker registrado"))
+        .catch(err => console.log("Service Worker no registrado", err))
+  })
+};
 
 const addParticipant = () => {
     const participant = document.getElementById("participantName");
@@ -13,7 +22,7 @@ const addParticipant = () => {
     ) {
         alert("Nombre del participante no puede estar vacío.");
         return;
-    }
+    };
     
     if (participantName in participants) {
         alert("Nombre de usuario ya utilizado");
@@ -213,7 +222,3 @@ const updateBalance = () => {
         });
     });
 };
-
-const idea = () => {
-
-}
