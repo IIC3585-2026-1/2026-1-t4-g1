@@ -3,7 +3,8 @@ const assets = [
     "/",
     "/index.html",
     "/js/app.js",
-    "/css/styles.css"
+    "/css/styles.css",
+    "/imgs/split_friends.png"
 ];
 
 // Se instala el service worker y se guardan los assets en la caché.
