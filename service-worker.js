@@ -1,8 +1,9 @@
 const cacheName = "split-friends-v1";
 const assets = [
-    "./index.html",
-    "./js/app.js",
-    "./css/styles.css"
+    "/",
+    "/index.html",
+    "/js/app.js",
+    "/css/styles.css"
 ];
 
 // Se instala el service worker y se guardan los assets en la caché.

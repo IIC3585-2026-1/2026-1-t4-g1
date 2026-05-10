@@ -4,7 +4,7 @@ const participants = {};
 if ("serviceWorker" in navigator) {
     // Espera que la página termine de cargar
     window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./../service-worker.js")
+        navigator.serviceWorker.register("/service-worker.js")
         .then(res => console.log("Service Worker registrado"))
         .catch(err => console.log("Service Worker no registrado", err))
   })
