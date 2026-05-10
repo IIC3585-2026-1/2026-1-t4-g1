@@ -1,4 +1,6 @@
 const participants = {};
+let notifActivated = false;
+let notifTimeout = null;
 
 // Registrar Service Worker
 if ("serviceWorker" in navigator) {
@@ -171,16 +173,16 @@ const addTransaction = () => {
 };
 
 const updateBalance = () => {
+    if (Object.keys(participants).length < 2) return;
+    
+    const hayTransacciones = Object.values(participants).some(txs => txs.length > 0);
+    if (!hayTransacciones) return;
+
     const balanceList = document.getElementById("balanceList");
     const balanceBox = document.getElementById("balanceBox");
     const amountPerPerson = document.getElementById("amountPerPerson");
     balanceList.innerHTML = "";
     balanceBox.innerHTML = "";
-
-    if (Object.keys(participants).length < 2) return;
-
-    const hayTransacciones = Object.values(participants).some(txs => txs.length > 0);
-    if (!hayTransacciones) return;
 
     let total = 0;
     Object.keys(participants).forEach((p) => {
@@ -221,4 +223,59 @@ const updateBalance = () => {
             balanceList.appendChild(item);
         });
     });
+};
+
+const allowNotifications = () => {
+    Notification.requestPermission().then((res) => {
+        if (res === "granted") {
+            notifActivated = true;
+            console.log("Notificaciones activadas.");
+            randomNotification();
+        }
+    });
+};
+
+const disableNotifications = () => {
+    notifActivated = false;
+    clearTimeout(notifTimeout);
+    console.log("Notificaciones desactivadas.");
+};
+
+const randomNotification = () => {
+    if (!notifActivated) return; 
+    const hayParticipantes = Object.keys(participants).length > 1;
+    
+    let notifTitle = "Nuevo evento.";
+    let notifBody = "Agrega más participantes o gastos!";
+    let notifImg = "/imgs/notification.png"; 
+
+    if (hayParticipantes) {
+        const randomPartIdx = Math.floor(Math.random() * Object.keys(participants).length);
+        const participantName = Object.keys(participants)[randomPartIdx];
+        const hayGastos = participants[participantName].length > 0;
+        
+        const random = Math.random();
+
+        if (hayGastos && random < 0.5) {
+            const randGastIx = Math.floor(Math.random() * participants[participantName].length);
+            const gastoAmount = participants[participantName][randGastIx].amount;
+            notifImg = "/imgs/new_tx.png";
+            notifTitle = `Nuevo gasto de $${gastoAmount}`;
+            notifBody = `Agregado por ${participantName}.`;
+
+        } else {
+            notifImg = "/imgs/new_member.png";
+            notifTitle = "Nuevo participante.";
+            notifBody = `${participantName} agregado al evento.`;
+        }
+    } 
+
+    const options = {
+        body: notifBody,
+        icon: notifImg
+    };
+
+    const notif = new Notification(notifTitle, options);
+    clearTimeout(notifTimeout);
+    notifTimeout = setTimeout(randomNotification, 30000);
 };

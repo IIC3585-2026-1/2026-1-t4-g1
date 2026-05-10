@@ -239,6 +239,11 @@ button[type="submit"]:active,
 }
 .secondary-button:hover { background: var(--border); }
 
+.secondary-button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
 /* Danger */
 .danger-button {
   background: var(--red-lt);
@@ -246,6 +251,11 @@ button[type="submit"]:active,
   border: 1px solid #e8bcbc;
 }
 .danger-button:hover { background: #edcaca; }
+
+.danger-button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
 
 .action-grid {
   display: grid;

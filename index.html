@@ -55,9 +55,6 @@
                 <button type="button" onclick="addParticipant()">Agregar</button>
             </form>
 
-            <div class="empty-state" id="participantsEmpty">
-                Aun no hay participantes. ¡Agrega algunos para empezar a dividir los gastos!
-            </div>
 
             <ul class="participants-list" id="participantsList"></ul>
         </section>
@@ -102,10 +99,6 @@
                 <button type="button" class="full-button" onclick="addTransaction()">Agregar gasto</button>
             </form>
 
-            <div class="empty-state" id="expensesEmpty">
-                Aun no hay gastos registrados. ¡Agrega algunos para empezar a dividir los gastos!
-            </div>
-
             <div class="expenses-list" id="expensesList"></div>
         </section>
 
@@ -121,10 +114,6 @@
             
             </div>
 
-            <div class="empty-state" id="balanceEmpty">
-                Aun no hay gastos registrados. ¡Agrega algunos para ver el balance!
-            </div>
-
             <div class="balance-list" id="balanceList"></div>
         </section>
 
@@ -132,17 +121,17 @@
             <div class="section-header">
                 <div>
                     <h2>Acciones PWA</h2>
-                    <p>Prueba las funcionalidades de la aplicación progresiva.</p>
+                    <p>Pruebas las funcionalidades de la PWA.</p>
                 </div>
             </div>
 
             <div class="action-grid">
-                <button type="button" class="secondary-button" id="notifyButton">
+                <button type="button" class="secondary-button" id="notifyButton" onclick="allowNotifications()">
                     Activar notificaciones
                 </button>
 
-                <button type="button" class="danger-button" id="clearDataButton">
-                    Limpiar datos
+                <button type="button" class="danger-button" id="clearDataButton" onclick="disableNotifications()">
+                    Desactivar notificaciones
                 </button>
             </div>
         </section>
