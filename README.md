@@ -18,6 +18,13 @@ Luego abrir `http://127.0.0.1:5500` en el navegador.
 
 ---
 
+## Instalación (Add to Home Screen)
+1. Abrir la app en el navegador 
+2. Clic en el ícono de "+" o "Add to Home Screen" (depende del navegador)
+3. Seguir las instrucciones para agregar la app a la pantalla de inicio del dispositivo. Esto instalará la PWA y permitirá usarla como una app nativa, incluyendo el acceso a notificaciones push.
+
+---
+
 ## Notificaciones push
 Las notificaciones push se implementaron usando **Firebase Cloud Messaging (FCM)**. 
 
